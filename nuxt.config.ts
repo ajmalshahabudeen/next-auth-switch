@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxt/ui", "@sidebase/nuxt-auth"],
+  modules: ["@nuxt/ui", "@sidebase/nuxt-auth", "@nuxt/icon"],
   auth: {
     globalAppMiddleware: true,
     provider: {
@@ -25,5 +25,8 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
     fallback: 'light', // fallback value if not specified
+  },
+  experimental: {
+    componentIslands: true
   }
 });

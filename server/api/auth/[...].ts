@@ -1,13 +1,16 @@
 import { NuxtAuthHandler } from "#auth";
-import Credentials from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "~/utils/prisma";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import Credentials from "next-auth/providers/credentials";
 
 export default NuxtAuthHandler({
   // your authentication configuration here!
   adapter: PrismaAdapter(prisma) as any,
   pages: {
     signIn: "/login",
+  },
+  session: {
+    strategy: "jwt",
   },
   providers: [
     (Credentials as any).default({
@@ -18,14 +21,15 @@ export default NuxtAuthHandler({
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email: { label: "Email", type: "email", placeholder: "jsmith@email.com" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any, req: any) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
+        const user = await UserFinder(credentials.email, credentials.password);
 
         if (user) {
+          console.log("user", user);
           // Any object returned will be saved in `user` property of the JWT
           return user;
         } else {
@@ -39,3 +43,21 @@ export default NuxtAuthHandler({
   ],
   secret: useRuntimeConfig().secret,
 });
+
+const UserFinder = async(email: string, password: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+  });
+  if (user) {
+    // console.log("user", user);
+    if (user.password === password) {
+      return user;
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+};

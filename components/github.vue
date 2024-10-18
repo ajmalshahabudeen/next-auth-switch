@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 const onClickHandler = async () => {
-  await navigateTo("https://nuxt.com", {
+  await navigateTo("https://github.com/ajmalshahabudeen/next-auth-switch", {
     external: true,
     open: {
     target: '_blank',

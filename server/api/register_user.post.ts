@@ -2,7 +2,7 @@ import { prisma } from "~/utils/prisma"
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const { username, email, password } = body
+  const { name, email, password } = body
 
   try {
     const userExistOrNot = await prisma.user.findUnique({
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     
     const creatUser = await prisma.user.create({
       data: {
-        name: username,
+        name: name,
         email: email,
         password: password
       }

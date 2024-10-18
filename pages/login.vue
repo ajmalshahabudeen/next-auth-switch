@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-screen flex-col items-center justify-center">
     <section>
-      <form @submit.prevent class="flex flex-col gap-5">
+      <form @submit.prevent="submit" class="flex flex-col gap-5">
         <div
           class="flex flex-col md:flex-row gap-5 items-center justify-center"
         >
@@ -35,21 +35,42 @@
           type="submit"
           icon="pixelarticons:arrow-right-box"
         />
+        <p v-if="error" class="text-red-500">Invalid credentials</p>
       </form>
     </section>
+   <UButton to="/register" icon="pixelarticons:user-plus" label="Register" class="absolute bottom-16"  size="xl" variant="link" />
   </div>
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
   auth: {
-    unauthenticatedOnly: false,
+    unauthenticatedOnly: true,
     navigateUnauthenticatedTo: "/auth/signin",
   },
 });
 
 const email = ref("");
 const password = ref("");
+
+const error = ref(false);
+
+const { signIn } = useAuth()
+
+const submit = async () => {
+  await signIn("credentials", {
+    email: email.value,
+    password: password.value,
+    redirect: false,
+  }).then((res: any) => {
+    console.log(res)
+    res.error ? (error.value = true) : navigateTo("/home");
+    setTimeout(() => {
+      error.value = false;
+    }, 3000);
+  })
+};
+
 </script>
 
 <style></style>
