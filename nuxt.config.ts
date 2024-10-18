@@ -9,7 +9,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxt/ui", "@sidebase/nuxt-auth", "@nuxt/icon"],
+  modules: [
+    "@nuxt/ui",
+    "@sidebase/nuxt-auth",
+    "@nuxt/icon",
+    "@pinia/nuxt",
+    "pinia-plugin-persistedstate/nuxt",
+  ],
   auth: {
     globalAppMiddleware: true,
     provider: {
@@ -21,12 +27,13 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     secret: process.env.AUTH_SECRET,
+    encryptionKey: process.env.ENCRYPT_SECRET,
   },
   colorMode: {
-    preference: 'system', // default value of $colorMode.preference
-    fallback: 'light', // fallback value if not specified
+    preference: "system", // default value of $colorMode.preference
+    fallback: "light", // fallback value if not specified
   },
   experimental: {
-    componentIslands: true
-  }
+    componentIslands: true,
+  },
 });
