@@ -1,11 +1,11 @@
 <template>
-  <div class="flex min-h-screen flex-col items-center justify-center">
-    <h1 class="text-3xl font-bold">
+  <div class="flex min-h-screen p-5 flex-col items-center justify-center">
+    <h1 class="text-5xl md:text-3xl font-bold">
       Account Switching App with Nuxt 3 and Nuxt Auth
     </h1>
     <div
       v-if="isLoggedIn"
-      class="text-3xl font-bold inline-flex items-center gap-5 p-5"
+      class="text-3xl font-bold flex flex-col md:flex-row w-full md:w-auto items-start md:items-center gap-5 py-5"
     >
       <UButton
         icon="pixelarticons:home"

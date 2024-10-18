@@ -1,9 +1,9 @@
 <template>
-  <div class="flex min-h-screen flex-col items-center justify-center">
+  <div class="flex min-h-screen flex-col items-start md:items-center justify-center p-6">
     <p class="text-3xl font-bold text-teal-500 dark:text-teal-400">
       This is the home page.
     </p>
-    <div v-if="data" class="text-3xl flex flex-col gap-5 p-6">
+    <div v-if="data" class="text-2xl md:text-3xl flex flex-col gap-5 py-6">
       <p>
         Name: {{ data.user?.name }}
       </p>
@@ -12,7 +12,7 @@
       </p>
     </div>
     <div v-else>You are not logged in.</div>
-    <div class="inline-flex items-center gap-5 p-5">
+    <div class="flex flex-col items-start md:flex-row md:items-center gap-5">
       <UButton
         icon="pixelarticons:home"
         to="/"
