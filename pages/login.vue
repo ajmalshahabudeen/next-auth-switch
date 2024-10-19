@@ -72,7 +72,7 @@ const submit = async () => {
     password: password.value,
     redirect: false,
   }).then(async (res: any) => {
-    console.log(res);
+    // console.log(res);
     if (res.error) {
       error.value = true;
       setTimeout(() => {
@@ -86,7 +86,7 @@ const submit = async () => {
           password: password.value,
         },
       }).then(async (res) => {
-        console.log(res);
+        // console.log(res);
         await checkAndUpdateEncryptedData(res).then(() => {
           navigateTo("/home");
         });
@@ -114,9 +114,9 @@ const checkAndUpdateEncryptedData = async (encryptedData: string) => {
 
       console.log(res);
       if (res.ok) {
-        console.log("res.data", res.data);
+        // console.log("res.data", res.data);
         if (res.data.email === email.value) {
-          console.log("Account found");
+          // console.log("Account found");
           emailFound = true;
           break; // Exit the loop since we found an account
         }
@@ -124,7 +124,7 @@ const checkAndUpdateEncryptedData = async (encryptedData: string) => {
     }
 
     if (!emailFound) {
-      console.log("Email not found in any saved account.");
+      // console.log("Email not found in any saved account.");
       account.accountNames = [...account.accountNames, email.value];
       account.addAccount(encryptedData);
     }

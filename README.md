@@ -1,75 +1,17 @@
-# Nuxt 3 Minimal Starter
+# What is this project about
+- This is a Nuxt project using NuxtAuth, Prisma ORM and Postgres Database.
+- It is simply a Authentication Nuxt Template for Account switching.
+- After logging with multiple accounts, You can switch between them.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Getting Started
 
-## Setup
+use bun - [https://bun.sh/](https://bun.sh/) to run this project.
 
-Make sure to install the dependencies:
+.env file contains:-
+- AUTH_SECRET -- which is a long secret string (use "openssl rand -base64 32" to generate it)
+- AUTH_ORIGIN -- project url (e.g. http://localhost:3000)
+- DATABASE_URL -- database url (prisma database url - postgres)
+- NODE_ENV -- development or production
+- ENCRYPT_SECRET -- which is a long secret string (use "openssl rand -base64 32" to generate it)
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+After configuring the .env file, use `bun run dev` to run the project.

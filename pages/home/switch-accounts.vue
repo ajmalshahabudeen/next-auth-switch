@@ -47,7 +47,7 @@ const getData = async (index: number) => {
       method: "GET",
     }
   );
-  console.log(res);
+  // console.log(res);
   const { email, password } = res.data;
   await signIn("credentials", {
     email: email,
@@ -57,7 +57,7 @@ const getData = async (index: number) => {
   })
 };
 
-console.log(accounts.accountNames);
+// console.log(accounts.accountNames);
 </script>
 
 <style></style>

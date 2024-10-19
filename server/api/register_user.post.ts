@@ -24,14 +24,14 @@ export default defineEventHandler(async (event) => {
         password: password
       }
     })
-    console.log("creatUser", creatUser)
+    // console.log("creatUser", creatUser)
     return {
       ok: true,
       message: "User created successfully"
     }
 
   } catch (error) {
-    console.log("trycatch errror", error)
+    // console.log("trycatch errror", error)
     return {
       ok: false,
       message: error

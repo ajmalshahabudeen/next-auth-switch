@@ -7,11 +7,11 @@ export default defineEventHandler(async (event) => {
   const cryptr = new Cryptr(useRuntimeConfig().encryptionKey);
 
   const encryptedData = cryptr.encrypt(JSON.stringify(data));
-  console.log("encryptedData", encryptedData);
+  // console.log("encryptedData", encryptedData);
 
   const decryptedData = cryptr.decrypt(encryptedData);
-  console.log("decryptedData", decryptedData);
+  // console.log("decryptedData", decryptedData);
 
-  console.log("body", body);
+  // console.log("body", body);
   return encryptedData;
 });

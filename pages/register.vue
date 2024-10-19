@@ -139,7 +139,7 @@ const submit = async () => {
     })
     .catch((err) => {
       loading.value = false;
-      console.log(err);
+      // console.log(err);
       error.value = true;
       errorMessage.value = err.message;
       const interval = setInterval(() => {
